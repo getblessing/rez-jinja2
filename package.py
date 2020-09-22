@@ -5,15 +5,20 @@ description = "A very fast and expressive template engine."
 
 version = "2.11.2"
 
-requires = [
-    "markupsafe-0.23+"
+requires = []
+
+variants = [
+    ["python-2.7"],
+    ["python-3.6"],
+    ["python-3.7"],
 ]
 
-variants = []
+pip_packages = [
+    "jinja2==2.11.2",
+]
 
-
-private_build_requires = ["rezutil-1", "pipz"]
-build_command = "python -m rezutil build {root} --use-pipz"
+private_build_requires = ["pipz"]
+build_command = "install %s --bundle" % " ".join(pip_packages)
 
 
 def commands():
